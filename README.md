@@ -1,7 +1,11 @@
 # py-cmd-react
 
 ## Description
-Python command line module to automatically create a minimal and basic react template
+Python command line module to automatically create a minimal dependencies and basic react template. It implements `react-router-dom` already to manage different "pages".
+
+There cames with the good practices like separated routes from the components, and the components by their own folders to define their styles in css and scss.
+
+<br>
 
 This app it's just tested on windows system.
 
@@ -15,6 +19,9 @@ This app it's just tested on windows system.
 - os : build-in module used as interface of the operative system.
 
 - webbrowser : build-in module that provides high-level interface to manage a browser.
+
+- json : build-in module to read and write json files.
+
 
 ## Setup
 
@@ -40,7 +47,7 @@ This app it's just tested on windows system.
   
   npm i -g webpack webpack-cli webpack-dev-server html-webpack-plugin
   
-  npm i -g babel-loader css-loader style-loader sass-loader file-loader
+  npm i -g babel-loader css-loader style-loader sass sass-loader file-loader
   ```
   if you want to use the `--pkg_mgr=pnpm` then change the requirement commands from npm to pnpm.
   
@@ -51,12 +58,18 @@ This app it's just tested on windows system.
 - scope :
   - --scope=global ( default )
   - --scope=local
-- pkg_mgr ( package managner ) :
+<br><br>
+- pkg_mgr ( package manager ) :
   - --pkg_mgr=npm ( default )
   - --pkg_mgr=pnpm
 
 ## Future Work
--
+- Add common components that use Hooks as example.
+- Implement generic useContext to the Navigation Bar.
 
 ## Screenshots
-#### Picking color
+### Terminal
+![cmd_hfAYrOH0lz](https://user-images.githubusercontent.com/36393143/205958747-4e4fdbae-4da3-4547-9b97-3e50ba9c34cc.png)
+
+### Main Screen
+![O2Li5X63D1](https://user-images.githubusercontent.com/36393143/205959165-3d7c9c80-d1cf-4ba9-867d-d31e5d099f50.png)

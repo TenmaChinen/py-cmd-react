@@ -1,4 +1,4 @@
-import shutil, json,os,sys
+import shutil, json, os, sys
 from pathlib import Path
 import webbrowser
 
@@ -65,5 +65,5 @@ else:
         os.system(f'pnpm link -g {str_react_libs} {str_babel_libs} {str_webpack_libs} {str_loaders_libs}')
 
 
-webbrowser.open('http://localhost:8080/')
+webbrowser.open('http://localhost:8080/home')
 os.system(f'{pkg_mgr} run start')
