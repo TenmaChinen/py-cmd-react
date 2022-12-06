@@ -3,7 +3,7 @@ from pathlib import Path
 import webbrowser
 
 l_args = sys.argv[1:]
-d_params = {'scope':'global', 'pkg_mgr':'pnpm'}
+d_params = {'scope':'local', 'pkg_mgr':'npm'}
 d_options = {'scope':['global','local'], 'pkg_mgr':['npm','pnpm']}
 
 for arg in l_args:
@@ -35,7 +35,7 @@ for file_name in os.listdir(SRC_DIR):
 pkg_mgr = d_params['pkg_mgr']
 
 if pkg_mgr == 'npm':
-    os.system('npm init y')
+    os.system('npm init -y')
 else:
     os.system('pnpm init')
 
@@ -53,7 +53,7 @@ with open('package.json','r+') as file:
 str_react_libs = 'react react-dom react-router-dom'
 str_babel_libs = '@babel/core @babel/preset-env @babel/preset-react'
 str_webpack_libs = 'webpack webpack-cli webpack-dev-server html-webpack-plugin'
-str_loaders_libs = 'babel-loader css-loader style-loader sass-loader file-loader'
+str_loaders_libs = 'babel-loader css-loader style-loader file-loader sass sass-loader '
 
 if d_params['scope'] == 'local':
     os.system(f'{pkg_mgr} i {str_react_libs} --S')
