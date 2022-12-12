@@ -3,7 +3,7 @@
 ## Description
 Python command line module to automatically create a minimal dependencies and basic react template. It implements `react-router-dom` already to manage different "pages".
 
-There cames with the good practices like separated routes from the components, and the components by their own folders to define their styles in css and scss.
+The setup cames with the good practices like separated routes from the components, and the components by their own folders to define their styles in css and scss.
 
 <br>
 
@@ -28,6 +28,7 @@ This app it's just tested on windows system.
 - Clone the repository anywhere in your local machine.
 
 - Create a new system variable from envirorment variables named : PYTHONPATH
+
 - Add the directory to PYTHONPATH to allow python have access to the module globally by using:
   `python -m module_name`
 

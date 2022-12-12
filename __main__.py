@@ -1,9 +1,9 @@
-import shutil, json, os, sys
+import os, sys, shutil, json, webbrowser
 from pathlib import Path
-import webbrowser
 
 l_args = sys.argv[1:]
 d_params = {'scope':'local', 'pkg_mgr':'npm'}
+# d_params = {'scope':'global', 'pkg_mgr':'pnpm'}
 d_options = {'scope':['global','local'], 'pkg_mgr':['npm','pnpm']}
 
 for arg in l_args:
