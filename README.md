@@ -70,6 +70,10 @@ python -m react
   - --pkg_mgr=npm ( default )
   - --pkg_mgr=pnpm
 
+- type :
+  - --type=basic ( default )
+  - --type=website ( adds navbar & router )
+
 ## Future Work
 - Add common components that use Hooks as example.
 - Implement generic useContext to the Navigation Bar.
