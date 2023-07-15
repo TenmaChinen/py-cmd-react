@@ -31,14 +31,14 @@ This app it's just tested on windows system.
 
 - Add the directory to PYTHONPATH to allow python have access to the module globally by using:
   
-  ```
+  ```cmd
   python -m module_name
   ```
 
 - Create another folder where you want to create the React project.
 
 - Open the terminal inside this new folder and type: 
-```
+```cmd
 python -m react
 ```
 
@@ -47,7 +47,7 @@ python -m react
 ## Setup Troubles
 - If you want to use the `--scope=global`, make sure to install the next requirements:
 
-  ```
+  ```cmd
   npm i -g react react-dom react-router-dom
   
   npm i -g @babel/core @babel/preset-env @babel/preset-react @babel/core @babel/preset-env @babel/preset-react
