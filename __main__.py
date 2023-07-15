@@ -1,36 +1,16 @@
-import os, sys, shutil, json, webbrowser
+import os, shutil, json, webbrowser
 from pathlib import Path
+from . import utils
 
-l_args = sys.argv[1:]
-d_params = {'scope':'local', 'pkg_mgr':'npm'}
-# d_params = {'scope':'global', 'pkg_mgr':'pnpm'}
-d_options = {'scope':['global','local'], 'pkg_mgr':['npm','pnpm']}
+d_params = utils.get_params()
 
-for arg in l_args:
-    if arg.__contains__('--') and arg.__contains__('='):
-        arg = arg.strip('--')
-        key, value = arg.split('=')
-        if key in d_params and value in d_options[key]:
-            d_params[key] = value
-            continue
-
-    print(f'\n    Arg : {arg} is not valid\n\n    Params must be:')
-    for key in d_params.keys():
-        values = ' or '.join(d_options[key])
-        print(f'        --{key}={values}')
-    print()
-    sys.exit()
-
-SRC_DIR = Path(__file__).resolve().parent / 'files'
+SRC_DIR = Path(__file__).resolve().parent / 'files' / d_params['type']
 DST_DIR = Path(os.getcwd()).resolve()
 
-for file_name in os.listdir(SRC_DIR):
-    src_file_path = SRC_DIR / file_name
-    dst_file_path = DST_DIR / file_name
-    if os.path.isfile(src_file_path):
-        shutil.copy(src=src_file_path, dst=dst_file_path)
-    elif os.path.isdir(src_file_path):
-        shutil.copytree(src=src_file_path, dst=dst_file_path)
+shutil.copy(src= SRC_DIR / '.babelrc' , dst= DST_DIR / '.babelrc' )
+shutil.copy(src= SRC_DIR / 'webpack.config.js' , dst= DST_DIR / 'webpack.config.js' )
+
+shutil.copytree(src= SRC_DIR / 'src' , dst= DST_DIR / 'src' )
 
 pkg_mgr = d_params['pkg_mgr']
 
@@ -50,10 +30,14 @@ with open('package.json','r+') as file:
 
 # install sass for sass-loader
 
-str_react_libs = 'react react-dom react-router-dom'
+str_react_libs = 'react react-dom'
 str_babel_libs = '@babel/core @babel/preset-env @babel/preset-react'
 str_webpack_libs = 'webpack webpack-cli webpack-dev-server html-webpack-plugin'
-str_loaders_libs = 'babel-loader css-loader style-loader file-loader sass sass-loader '
+str_loaders_libs = 'babel-loader css-loader style-loader file-loader'
+
+if d_params['type'] == 'website':
+    str_react_libs += ' react-router-dom'
+    str_loaders_libs +=  ' sass sass-loader'
 
 if d_params['scope'] == 'local':
     os.system(f'{pkg_mgr} i {str_react_libs} --S')
@@ -64,6 +48,11 @@ else:
     else:
         os.system(f'pnpm link -g {str_react_libs} {str_babel_libs} {str_webpack_libs} {str_loaders_libs}')
 
+url = 'http://localhost:8080'
 
-webbrowser.open('http://localhost:8080/home')
+if d_params['type'] == 'website' :
+    url += '/home'
+
+webbrowser.open(url)
+
 os.system(f'{pkg_mgr} run start')

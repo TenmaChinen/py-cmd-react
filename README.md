@@ -30,11 +30,17 @@ This app it's just tested on windows system.
 - Create a new system variable from envirorment variables named : PYTHONPATH
 
 - Add the directory to PYTHONPATH to allow python have access to the module globally by using:
-  `python -m module_name`
+  
+  ```
+  python -m module_name
+  ```
 
 - Create another folder where you want to create the React project.
 
-- Open the terminal inside this new folder and type: `python -m react`
+- Open the terminal inside this new folder and type: 
+```
+python -m react
+```
 
 - Wait until everything is set and a browser window will be open.
 
