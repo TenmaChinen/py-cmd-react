@@ -22,7 +22,7 @@ else:
 with open('package.json','r+') as file:
     data = json.load(file)
     data['scripts'] = {
-        'start' : 'webpack-dev-server --mode=development',
+        'dev' : 'webpack-dev-server --mode=development',
         'build' : 'webpack --mode=production'
         }
     file.seek(0)
@@ -43,10 +43,13 @@ if d_params['scope'] == 'local':
     os.system(f'{pkg_mgr} i {str_react_libs} --S')
     os.system(f'{pkg_mgr} i {str_babel_libs} {str_webpack_libs} {str_loaders_libs} --D')
 else:
+    # Global
     if pkg_mgr == 'npm':
-        os.system(f'npm link {str_react_libs} {str_babel_libs} {str_webpack_libs} {str_loaders_libs}')
+        os.system(f'npm link {str_react_libs} {str_babel_libs} {str_loaders_libs}')
+        # os.system(f'npm link {str_react_libs} {str_babel_libs} {str_webpack_libs} {str_loaders_libs}')
     else:
-        os.system(f'pnpm link -g {str_react_libs} {str_babel_libs} {str_webpack_libs} {str_loaders_libs}')
+        os.system(f'pnpm link -g {str_react_libs} {str_babel_libs} {str_loaders_libs}')
+        # os.system(f'pnpm link -g {str_react_libs} {str_babel_libs} {str_webpack_libs} {str_loaders_libs}')
 
 url = 'http://localhost:8080'
 
@@ -55,4 +58,4 @@ if d_params['type'] == 'website' :
 
 webbrowser.open(url)
 
-os.system(f'{pkg_mgr} run start')
+os.system(f'{pkg_mgr} run dev')

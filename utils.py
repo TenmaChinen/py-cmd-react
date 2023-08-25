@@ -1,4 +1,4 @@
-import sys
+import sys, json
 
 def get_params():
 
@@ -9,6 +9,10 @@ def get_params():
     d_options = dict( scope = ['global','local'], pkg_mgr = ['npm','pnpm'], type=['basic','website'] )
 
     for arg in l_args:
+        if arg == '-h':
+            for key, value in d_options.items():
+                print(f'{key:>10} : {value}')
+            sys.exit()
         if arg.__contains__('--') and arg.__contains__('='):
             arg = arg.strip('--')
             key, value = arg.split('=')
